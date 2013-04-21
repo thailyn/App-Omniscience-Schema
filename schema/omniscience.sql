@@ -34,15 +34,6 @@ CREATE TABLE personas (
   CONSTRAINT unique__personas__user_algorithm_version UNIQUE(user_id, algorithm_id, version)
 );
 
--- All of the possible card types (enchantment, creature, etc.).
-DROP TABLE IF EXISTS card_types CASCADE;
-CREATE TABLE card_types (
-  id SERIAL PRIMARY KEY,
-  name varchar NOT NULL,
-
-  CONSTRAINT unique__card_types__name UNIQUE(name)
-);
-
 DROP TABLE IF EXISTS cards CASCADE;
 CREATE TABLE cards (
   id SERIAL PRIMARY KEY,
@@ -55,6 +46,15 @@ CREATE TABLE cards (
   oracle_text varchar NULL,
 
   CONSTRAINT unique__cards__name UNIQUE(name)
+);
+
+-- All of the possible card types (enchantment, creature, etc.).
+DROP TABLE IF EXISTS card_types CASCADE;
+CREATE TABLE card_types (
+  id SERIAL PRIMARY KEY,
+  name varchar NOT NULL,
+
+  CONSTRAINT unique__card_types__name UNIQUE(name)
 );
 
 -- TODO: Get a better name for this.
