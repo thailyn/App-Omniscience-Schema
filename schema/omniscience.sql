@@ -80,7 +80,7 @@ CREATE TABLE oracle_rulings (
   ruling_text varchar NOT NULL,
 
   CONSTRAINT unique__oracle_rulings__card_id_rank UNIQUE(card_id, rank)
-)
+);
 
 DROP TABLE IF EXISTS sets CASCADE;
 CREATE TABLE sets (
