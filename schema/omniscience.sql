@@ -192,8 +192,8 @@ CREATE TABLE booster_packs (
   open_date DATE NULL
 );
 
-DROP TABLE IF EXISTS booster_pack_contents CASCADE;
-CREATE TABLE booster_pack_contents (
+DROP TABLE IF EXISTS booster_pack_cards CASCADE;
+CREATE TABLE booster_pack_cards (
   id SERIAL PRIMARY KEY, -- TOOD: bigserial? check size
   card_printing_id INT NULL REFERENCES card_printings(id),
   description varchar NULL, -- name if set card does not exist, or ad description
