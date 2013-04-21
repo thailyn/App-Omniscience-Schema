@@ -105,7 +105,7 @@ CREATE TABLE set_cards (
 
 -- "booster box", "fat pack", "loose packs", etc.
 DROP TABLE IF EXISTS container_types CASCADE;
-CREATE TABLE container_sets (
+CREATE TABLE container_types (
   id SERIAL PRIMARY KEY, -- but small int version
   name varchar NOT NULL,
   description varchar NULL,
