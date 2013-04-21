@@ -120,7 +120,7 @@ CREATE TABLE containers (
   parent_container_id INT NULL references containers(id),
   --set_id INT NOT NULL references sets(id), -- do not have this, as it could be mixed
   number_of_packs INT NOT NULL,
-  price DECIMAL NULL, -- TODO: get actual type for money
+  price NUMERIC(3, 10) NULL,
   source varchar NULL, -- where the container was obtained
   opener_id INT NULL REFERENCES users(id),
   open_date -- date with time and time zone
@@ -140,7 +140,7 @@ CREATE TABLE booster_packs (
   container_column varchar NULL, -- column in container (for boxes specifically); TODO: lookup table?
   container_rank INT NULL, -- rank in the container
 
-  price DECIMAL NULL, -- TODO: get actual type for money
+  price NUMERIC(3, 10) NULL,
   source varchar NULL, -- where the booster was obtained
   opener_id INT NULL REFERENCES users(id),
   open_date -- date with time and time zone
