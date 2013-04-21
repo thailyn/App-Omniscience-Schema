@@ -106,7 +106,8 @@ CREATE SEQUENCE rarities_id_seq;
 CREATE TABLE rarities (
   id SMALLINT NOT NULL DEFAULT nextval('rarities_id_seq') PRIMARY KEY,
   name varchar NOT NULL,
-  relative_rarity int NOT NULL, -- 1 = common, 2 = uncommon, etc. (partial order)
+  relative_rarity int NOT NULL, -- partial order of rarities
+    -- 1 = land, 2 = common, 3 = uncommon, 4 = rare, 5 = mythic
 
   CONSTRAINT unique__rarities__name UNIQUE(name)
 );
