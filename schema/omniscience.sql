@@ -58,14 +58,17 @@ CREATE TABLE cards (
 );
 
 -- TODO: Get a better name for this.
-DROP TABLE IF EXISTS card_card_types CASCADE;
-CREATE TABLE card_card_types (
-  id SERIAL PRIMARY KEY,
-  card_id int REFERENCES cards(id),
-  type_id int REFERENCES card_types(id),
-
-  CONSTRAINT unique__card_card_types__card_type UNIQUE(card_id, type_id)
-);
+-- TODO: Determine if this table is needed.  This kind of data tracking might
+--       be beyond the scope of this application (where the string of the
+--       card's type in the cards table might be sufficient).
+--DROP TABLE IF EXISTS card_card_types CASCADE;
+--CREATE TABLE card_card_types (
+--  id SERIAL PRIMARY KEY,
+--  card_id int REFERENCES cards(id),
+--  type_id int REFERENCES card_types(id),
+--
+--  CONSTRAINT unique__card_card_types__card_type UNIQUE(card_id, type_id)
+--);
 
 -- Stores the rulings for each card.
 DROP TABLE IF EXISTS oracle_rulings CASCADE;
