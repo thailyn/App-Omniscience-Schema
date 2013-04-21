@@ -130,6 +130,8 @@ CREATE TABLE card_printings (
   CONSTRAINT unique__card_printings__card_set UNIQUE(card_id, set_id)
 );
 
+-- The serial number and card printing being depicted (if any) on the booster
+-- packs for a set.
 DROP TABLE IF EXISTS booster_versions CASCADE;
 CREATE TABLE booster_versions (
   id SERIAL PRIMARY KEY,
