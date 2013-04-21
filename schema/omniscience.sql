@@ -138,6 +138,8 @@ CREATE TABLE booster_versions (
   set_id INT NOT NULL REFERENCES sets(id),
   card_printing_id INT NULL REFERENCES card_printings(id),
   serial VARCHAR NOT NULL,
+  number_game_cards SMALLINT NOT NULL, -- typically what is listed on the pack
+  number_total_cards SMALLINT NOT NULL, -- includes ads
 
   CONSTRAINT unique__booster_versions__serial UNIQUE(serial)
 );
