@@ -123,7 +123,6 @@ CREATE TABLE artists (
   CONSTRAINT unique__artists__name UNIQUE(name)
 );
 
--- TODO: better name?
 DROP TABLE IF EXISTS card_printings CASCADE;
 CREATE TABLE card_printings (
   id SERIAL PRIMARY KEY,
