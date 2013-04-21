@@ -196,6 +196,8 @@ DROP TABLE IF EXISTS booster_pack_cards CASCADE;
 CREATE TABLE booster_pack_cards (
   id SERIAL PRIMARY KEY, -- TOOD: bigserial? check size
   card_printing_id INT NULL REFERENCES card_printings(id),
+  booster_pack_id INT NOT NULL REFERENCES booster_packs(id),
+  rank SMALLINT NULL, -- nullable to allow "unknown" rank
   description varchar NULL, -- name if set card does not exist, or ad description
   is_foil boolean NOT NULL DEFAULT FALSE,
   is_ad boolean NOT NULL DEFAULT FALSE
