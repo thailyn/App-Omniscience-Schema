@@ -40,7 +40,7 @@ CREATE TABLE oracle_rulings (
   id SERIAL PRIMARY KEY,
   card_id INT NOT NULL REFERENCES cards(id),
   rank SMALLINT NOT NULL,
-  date -- date (no time),
+  ruling_date DATE NOT NULL,
   ruling_text varchar NOT NULL,
 
   CONSTRAINT unique__oracle_rulings__card_id_rank UNIQUE(card_id, rank)
@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS sets CASCADE;
 CREATE TABLE sets (
   id SERIAL PRIMARY KEY,
   name varchar NOT NULL,
-  release_date --date (no time),
+  release_date DATE NOT NULL,
   size int NOT NULL,
   expansion_code varchar NOT NULL,
 
@@ -123,7 +123,7 @@ CREATE TABLE containers (
   price NUMERIC(3, 10) NULL,
   source varchar NULL, -- where the container was obtained
   opener_id INT NULL REFERENCES users(id),
-  open_date -- date with time and time zone
+  open_date DATE NULL
 );
 
 DROP TABLE IF EXISTS booster_packs CASCADE;
@@ -143,7 +143,7 @@ CREATE TABLE booster_packs (
   price NUMERIC(3, 10) NULL,
   source varchar NULL, -- where the booster was obtained
   opener_id INT NULL REFERENCES users(id),
-  open_date -- date with time and time zone
+  open_date DATE NULL
 );
 
 DROP TABLE IF EXISTS booster_pack_contents CASCADE;
