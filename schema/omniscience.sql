@@ -136,7 +136,7 @@ DROP TABLE IF EXISTS booster_versions CASCADE;
 CREATE TABLE booster_versions (
   id SERIAL PRIMARY KEY,
   set_id INT NOT NULL REFERENCES sets(id),
-  card_printing_id INT NOT NULL REFERENCES card_printings(id),
+  card_printing_id INT NULL REFERENCES card_printings(id),
   serial VARCHAR NOT NULL,
 
   CONSTRAINT unique__booster_versions__serial UNIQUE(serial)
