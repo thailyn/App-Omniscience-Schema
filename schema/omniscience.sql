@@ -124,7 +124,7 @@ CREATE TABLE artists (
 -- TODO: better name?
 DROP TABLE IF EXISTS card_printings CASCADE;
 CREATE TABLE card_printings (
-  id SERIAL PRIMARY KEY, -- TODO: bigserial?
+  id SERIAL PRIMARY KEY,
   card_id INT NOT NULL REFERENCES cards(id),
   set_id INT NOT NULL REFERENCES sets(id),
   rarity_id SMALLINT NOT NULL REFERENCES rarities(id),
