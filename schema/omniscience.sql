@@ -104,14 +104,17 @@ CREATE TABLE set_cards (
 
 
 -- "booster box", "fat pack", "loose packs", etc.
+DROP SEQUENCE IF EXISTS container_types_id_seq CASCADE;
 DROP TABLE IF EXISTS container_types CASCADE;
+CREATE SEQUENCE container_types_id_seq;
 CREATE TABLE container_types (
-  id SERIAL PRIMARY KEY, -- but small int version
+  id SMALLINT NOT NULL DEFAULT nextval('container_types_id_seq') PRIMARY KEY,
   name varchar NOT NULL,
   description varchar NULL,
 
   CONSTRAINT unique__container_types__name UNIQUE(name)
 );
+ALTER SEQUENCE container_types_id_seq OWNED BY container_types.id;
 
 -- TODO: get a better name for this
 DROP TABLE IF EXISTS containers CASCADE;
