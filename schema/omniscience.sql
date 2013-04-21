@@ -203,4 +203,5 @@ CREATE TABLE booster_pack_contents (
          Then, a card belongs to a booster, which belongs to a box (or nothing?).
    TODO: Create lookup table for container columns.
    TODO: Add columns to tables to keep track of which persona modified a table, and when.
+   TODO: Add tables and columns to keep track of formats.
 */
