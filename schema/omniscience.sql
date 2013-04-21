@@ -58,7 +58,6 @@ CREATE TABLE cards (
 );
 
 -- TODO: Get a better name for this.
--- TODO: Bigger serial than INT?  BIGSERAL?
 DROP TABLE IF EXISTS card_card_types CASCADE;
 CREATE TABLE card_card_types (
   id SERIAL PRIMARY KEY,
