@@ -93,15 +93,6 @@ CREATE TABLE sets (
   CONSTRAINT unique__sets__name UNIQUE(name)
 );
 
-DROP TABLE IF EXISTS set_booster_images CASCADE;
-CREATE TABLE set_booster_images (
-  id SERIAL PRIMARY KEY,
-  set_id INT NOT NULL REFERENCES sets(id),
-  serial VARCHAR NOT NULL,
-
-  CONSTRAINT unique__set_booster_images__serial UNIQUE(serial)
-);
-
 DROP SEQUENCE IF EXISTS rarities_id_seq CASCADE;
 DROP TABLE IF EXISTS rarities CASCADE;
 CREATE SEQUENCE rarities_id_seq;
@@ -139,6 +130,14 @@ CREATE TABLE card_printings (
   CONSTRAINT unique__card_printings__card_set UNIQUE(card_id, set_id)
 );
 
+DROP TABLE IF EXISTS set_booster_images CASCADE;
+CREATE TABLE set_booster_images (
+  id SERIAL PRIMARY KEY,
+  set_id INT NOT NULL REFERENCES sets(id),
+  serial VARCHAR NOT NULL,
+
+  CONSTRAINT unique__set_booster_images__serial UNIQUE(serial)
+);
 
 -- "booster box", "fat pack", "loose packs", etc.
 DROP SEQUENCE IF EXISTS container_types_id_seq CASCADE;
