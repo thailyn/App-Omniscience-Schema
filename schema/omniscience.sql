@@ -200,9 +200,9 @@ CREATE TABLE booster_pack_cards (
   rank SMALLINT NULL, -- nullable to allow "unknown" rank
   description varchar NULL, -- name if set card does not exist, or ad description
   is_foil boolean NOT NULL DEFAULT FALSE,
-  is_ad boolean NOT NULL DEFAULT FALSE
+  is_ad boolean NOT NULL DEFAULT FALSE,
 
-  --CONSTRAINT unique__booster_pack_contents__......
+  CONSTRAINT unique__booster_pack_cards__booster_pack_rank UNIQUE(booster_pack_id, rank)
 );
 
 /* TODO: Should boosters themselves be a "container"?
