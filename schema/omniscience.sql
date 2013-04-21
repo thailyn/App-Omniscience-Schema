@@ -128,6 +128,7 @@ CREATE TABLE card_printings (
   card_id INT NOT NULL REFERENCES cards(id),
   set_id INT NOT NULL REFERENCES sets(id),
   rarity_id SMALLINT NOT NULL REFERENCES rarities(id),
+  multiverse_id INT NULL,
   type_text varchar NOT NULL,
   card_text varchar NULL,
   flavor_text varchar NULL,
