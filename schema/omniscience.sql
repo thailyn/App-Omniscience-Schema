@@ -66,15 +66,17 @@ CREATE TABLE set_booster_images (
   CONSTRAINT unique__set_booster_images__serial UNIQUE(serial)
 );
 
--- TODO: check spelling
+DROP SEQUENCE IF EXISTS rarities_id_seq CASCADE;
 DROP TABLE IF EXISTS rarities CASCADE;
+CREATE SEQUENCE rarities_id_seq;
 CREATE TABLE rarities (
-  id SERIAL PRIMARY KEY, -- TODO: small version
+  id SMALLINT NOT NULL DEFAULT nextval('rarities_id_seq') PRIMARY KEY,
   name varchar NOT NULL,
   relative_rarity int NOT NULL, -- 1 = common, 2 = uncommon, etc. (partial order)
 
   CONSTRAINT unique__rarities__name UNIQUE(name)
 );
+ALTER SEQUENCE rarities_id_seq OWNED BY rarities.id;
 
 DROP TABLE IF EXISTS artists CASCADE;
 CREATE TABLE artists (
