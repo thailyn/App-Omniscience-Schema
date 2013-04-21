@@ -48,21 +48,21 @@ CREATE TABLE cards (
   CONSTRAINT unique__cards__name UNIQUE(name)
 );
 
--- All of the possible card types (enchantment, creature, etc.).
-DROP TABLE IF EXISTS card_types CASCADE;
-CREATE TABLE card_types (
-  id SERIAL PRIMARY KEY,
-  name varchar NOT NULL,
-
-  CONSTRAINT unique__card_types__name UNIQUE(name)
-);
-
--- TODO: Get a better name for this.
--- TODO: Determine if this table is needed.  This kind of data tracking might
---       be beyond the scope of this application (where the string of the
---       card's type in the cards table might be sufficient).
---DROP TABLE IF EXISTS card_card_types CASCADE;
---CREATE TABLE card_card_types (
+-- TODO: Determine if these table are needed.  This kind of data tracking
+--       might be beyond the scope of this application (where the string of
+--       the card's type in the cards table might be sufficient).
+---- All of the possible card types (enchantment, creature, etc.).
+--DROP TABLE IF EXISTS card_types CASCADE;
+--CREATE TABLE card_types (
+--  id SERIAL PRIMARY KEY,
+--  name varchar NOT NULL,
+--
+--  CONSTRAINT unique__card_types__name UNIQUE(name)
+--);
+--
+---- TODO: Get a better name for this.
+----DROP TABLE IF EXISTS card_card_types CASCADE;
+----CREATE TABLE card_card_types (
 --  id SERIAL PRIMARY KEY,
 --  card_id int REFERENCES cards(id),
 --  type_id int REFERENCES card_types(id),
