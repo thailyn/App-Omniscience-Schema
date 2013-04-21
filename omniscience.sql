@@ -160,4 +160,6 @@ CREATE TABLE booster_pack_contents (
 /* TODO: Should boosters themselves be a "container"?
          Then, a card belongs to a booster, which belongs to a box (or nothing?).
    TODO: Create lookup table for container columns.
+   TODO: Users and related tables (algorithms, personas).
+   TODO: Add columns to tables to keep track of which persona modified a table, and when.
 */
