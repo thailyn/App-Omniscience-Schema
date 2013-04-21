@@ -173,7 +173,7 @@ CREATE TABLE booster_packs (
   id SERIAL PRIMARY KEY,
   name varchar NULL, -- computed "code" that is human readable
   set_id INT NOT NULL references sets(id),
-  set_booster_image_id INT NULL references set_booster_image(id),
+  set_booster_image_id INT NULL references set_booster_images(id),
   code VARCHAR NULL,
 
   -- TODO: Move these three columns into a mapping table between containers
