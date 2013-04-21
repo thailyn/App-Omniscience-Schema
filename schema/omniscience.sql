@@ -122,8 +122,8 @@ CREATE TABLE artists (
 );
 
 -- TODO: better name?
-DROP TABLE IF EXISTS set_cards CASCADE;
-CREATE TABLE set_cards (
+DROP TABLE IF EXISTS card_printings CASCADE;
+CREATE TABLE card_printings (
   id SERIAL PRIMARY KEY, -- TODO: bigserial?
   card_id INT NOT NULL REFERENCES cards(id),
   set_id INT NOT NULL REFERENCES sets(id),
@@ -134,7 +134,7 @@ CREATE TABLE set_cards (
   card_number int NULL,
   artist int NULL REFERENCES artists(id),
 
-  CONSTRAINT unique__set_cards__card_set UNIQUE(card_id, set_id)
+  CONSTRAINT unique__card_printings__card_set UNIQUE(card_id, set_id)
 );
 
 
@@ -189,7 +189,7 @@ CREATE TABLE booster_packs (
 DROP TABLE IF EXISTS booster_pack_contents CASCADE;
 CREATE TABLE booster_pack_contents (
   id SERIAL PRIMARY KEY, -- TOOD: bigserial? check size
-  set_card_id INT NULL REFERENCES set_cards(id),
+  card_printing_id INT NULL REFERENCES card_printings(id),
   description varchar NULL, -- name if set card does not exist, or ad description
   is_foil boolean NOT NULL DEFAULT FALSE,
   is_ad boolean NOT NULL DEFAULT FALSE
