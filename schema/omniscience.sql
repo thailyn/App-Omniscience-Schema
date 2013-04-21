@@ -134,6 +134,7 @@ DROP TABLE IF EXISTS set_booster_images CASCADE;
 CREATE TABLE set_booster_images (
   id SERIAL PRIMARY KEY,
   set_id INT NOT NULL REFERENCES sets(id),
+  card_printing_id INT NOT NULL REFERENCES card_printings(id),
   serial VARCHAR NOT NULL,
 
   CONSTRAINT unique__set_booster_images__serial UNIQUE(serial)
