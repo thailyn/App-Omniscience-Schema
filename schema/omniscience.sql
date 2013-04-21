@@ -130,14 +130,14 @@ CREATE TABLE card_printings (
   CONSTRAINT unique__card_printings__card_set UNIQUE(card_id, set_id)
 );
 
-DROP TABLE IF EXISTS set_booster_images CASCADE;
-CREATE TABLE set_booster_images (
+DROP TABLE IF EXISTS booster_versions CASCADE;
+CREATE TABLE booster_versions (
   id SERIAL PRIMARY KEY,
   set_id INT NOT NULL REFERENCES sets(id),
   card_printing_id INT NOT NULL REFERENCES card_printings(id),
   serial VARCHAR NOT NULL,
 
-  CONSTRAINT unique__set_booster_images__serial UNIQUE(serial)
+  CONSTRAINT unique__booster_versions__serial UNIQUE(serial)
 );
 
 -- "booster box", "fat pack", "loose packs", etc.
@@ -173,7 +173,7 @@ CREATE TABLE booster_packs (
   id SERIAL PRIMARY KEY,
   name varchar NULL, -- computed "code" that is human readable
   set_id INT NOT NULL references sets(id),
-  set_booster_image_id INT NULL references set_booster_images(id),
+  booster_version_id INT NULL references booster_versions(id),
   code VARCHAR NULL,
 
   -- TODO: Move these three columns into a mapping table between containers
