@@ -151,8 +151,8 @@ CREATE TABLE booster_pack_contents (
   id SERIAL PRIMARY KEY, -- TOOD: bigserial? check size
   set_card_id INT NULL REFERENCES set_cards(id),
   description varchar NULL, -- name if set card does not exist, or ad description
-  is_foil bool NOT NULL DEFAULT(0), -- TODO: check syntax
-  is_ad bool NOT NULL DEFAULT(0), -- TODO: check syntax
+  is_foil boolean NOT NULL DEFAULT FALSE,
+  is_ad boolean NOT NULL DEFAULT FALSE
 
   --CONSTRAINT unique__booster_pack_contents__......
 );
