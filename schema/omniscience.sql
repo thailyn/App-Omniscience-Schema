@@ -1,5 +1,39 @@
 -- -*- sql -*- --
 
+DROP TABLE IF EXISTS algorithms CASCADE;
+CREATE TABLE algorithms (
+  id SERIAL PRIMARY KEY,
+  name varchar NOT NULL,
+  description varchar NULL,
+
+  CONSTRAINT unique__algorithms__name UNIQUE(name)
+);
+
+DROP TABLE IF EXISTS users CASCADE;
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name varchar NOT NULL,
+  password_hash varchar NULL,
+  first_name varchar NULL,
+  middle_name varchar NULL,
+  last_name varchar NULL,
+  email varchar NULL,
+  date_created timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  is_active boolean NOT NULL DEFAULT TRUE,
+
+  CONSTRAINT unique__users__name UNIQUE(name)
+);
+
+DROP TABLE IF EXISTS personas CASCADE;
+CREATE TABLE personas (
+  id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL REFERENCES users(id),
+  algorithm_id INT NOT NULL REFERENCES algorithms(id),
+  version varchar NOT NULL,
+
+  CONSTRAINT unique__personas__user_algorithm_version UNIQUE(user_id, algorithm_id, version)
+);
+
 -- All of the possible card types (enchantment, creature, etc.).
 DROP TABLE IF EXISTS card_types CASCADE;
 CREATE TABLE card_types (
@@ -165,6 +199,5 @@ CREATE TABLE booster_pack_contents (
 /* TODO: Should boosters themselves be a "container"?
          Then, a card belongs to a booster, which belongs to a box (or nothing?).
    TODO: Create lookup table for container columns.
-   TODO: Users and related tables (algorithms, personas).
    TODO: Add columns to tables to keep track of which persona modified a table, and when.
 */
