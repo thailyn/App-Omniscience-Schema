@@ -169,7 +169,10 @@ CREATE TABLE containers (
   price NUMERIC(10, 3) NULL,
   source varchar NULL, -- where the container was obtained
   opener_id INT NULL REFERENCES users(id),
-  open_date DATE NULL
+  open_date DATE NULL,
+
+  persona_id INT NOT NULL REFERENCES personas(id),
+  modified TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE IF EXISTS booster_packs CASCADE;
@@ -189,7 +192,10 @@ CREATE TABLE booster_packs (
   price NUMERIC(10, 3) NULL,
   source varchar NULL, -- where the booster was obtained
   opener_id INT NULL REFERENCES users(id),
-  open_date DATE NULL
+  open_date DATE NULL,
+
+  persona_id INT NOT NULL REFERENCES personas(id),
+  modified TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE IF EXISTS booster_pack_cards CASCADE;
@@ -201,6 +207,9 @@ CREATE TABLE booster_pack_cards (
   description varchar NULL, -- name if set card does not exist, or ad description
   is_foil boolean NOT NULL DEFAULT FALSE,
   is_ad boolean NOT NULL DEFAULT FALSE,
+
+  persona_id INT NOT NULL REFERENCES personas(id),
+  modified TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
   CONSTRAINT unique__booster_pack_cards__booster_pack_rank UNIQUE(booster_pack_id, rank)
 );
