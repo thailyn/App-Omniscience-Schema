@@ -228,9 +228,24 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 user_permissions
 
-# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-04-21 19:46:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tVfr+anelyRows1ba4IPgA
+Type: has_many
+
+Related object: L<App::Omniscience::Schema::Result::UserPermission>
+
+=cut
+
+__PACKAGE__->has_many(
+  "user_permissions",
+  "App::Omniscience::Schema::Result::UserPermission",
+  { "foreign.user_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07035 @ 2013-04-21 20:14:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yyLAShI7xNSCXXmkceLjrg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
