@@ -34,6 +34,25 @@ CREATE TABLE personas (
   CONSTRAINT unique__personas__user_algorithm_version UNIQUE(user_id, algorithm_id, version)
 );
 
+DROP SEQUENCE IF EXISTS permissions_id_seq CASCADE;
+DROP TABLE IF EXISTS permissions CASCADE;
+CREATE SEQUENCE permissions_id_seq;
+CREATE TABLE permissions (
+  id SMALLINT NOT NULL DEFAULT nextval('permissions_id_seq') PRIMARY KEY,
+  name varchar NOT NULL,
+  description varchar NULL,
+
+  CONSTRAINT unique__permissions__name UNIQUE(name)
+);
+ALTER SEQUENCE permissions_id_seq OWNED BY permissions.id;
+
+DROP TABLE IF EXISTS user_permissions CASCADE;
+CREATE TABLE user_permissions (
+  id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL REFERENCES users(id),
+  permission_id SMALLINT NOT NULL REFERENCES permissions(id)
+);
+
 DROP TABLE IF EXISTS cards CASCADE;
 CREATE TABLE cards (
   id SERIAL PRIMARY KEY,
